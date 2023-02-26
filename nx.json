@@ -45,16 +45,21 @@
       "style": "scss",
       "linter": "eslint",
       "unitTestRunner": "jest",
-      "e2eTestRunner": "cypress"
+      "e2eTestRunner": "cypress",
+      "addTailwind": true,
+      "standalone": true
     },
     "@nrwl/angular:library": {
       "linter": "eslint",
-      "unitTestRunner": "jest"
-    },
-    "@nrwl/angular:component": {
-      "style": "scss",
+      "unitTestRunner": "jest",
+      "addTailwind": true,
       "changeDetection": "OnPush",
       "standalone": true
+    },
+    "@nrwl/angular:component": {
+      "changeDetection": "OnPush",
+      "standalone": true,
+      "style": "scss"
     }
   }
 }
