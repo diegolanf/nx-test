@@ -1,6 +1,7 @@
 {
   "extends": ["../../.eslintrc.json"],
   "ignorePatterns": ["!**/*"],
+  "plugins": ["no-relative-import-paths"],
   "overrides": [
     {
       "files": ["*.ts"],
@@ -19,6 +20,12 @@
             "type": "element",
             "prefix": "diego-langarica",
             "style": "kebab-case"
+          }
+        ],
+        "no-relative-import-paths/no-relative-import-paths": [
+          "error",
+          {
+            "allowSameFolder": true
           }
         ]
       },
