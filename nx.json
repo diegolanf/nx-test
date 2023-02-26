@@ -52,14 +52,14 @@
     "@nrwl/angular:library": {
       "linter": "eslint",
       "unitTestRunner": "jest",
-      "addTailwind": true,
-      "changeDetection": "OnPush",
-      "standalone": true
-    },
-    "@nrwl/angular:component": {
       "changeDetection": "OnPush",
       "standalone": true,
       "style": "scss"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss",
+      "changeDetection": "OnPush",
+      "standalone": true
     }
   }
 }
