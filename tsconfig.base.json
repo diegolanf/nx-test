@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "skipLibCheck": true,
     "sourceMap": true,
+    "strictNullChecks": true,
     "strictPropertyInitialization": true,
     "target": "es2015"
   },
