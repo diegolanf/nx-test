@@ -1,22 +1,27 @@
-/**
- * This is not a production server yet!
- * This is only a minimal backend to get started.
- */
-
-import { Logger } from '@nestjs/common';
+import { INestApplication } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
+import { ExpressAdapter } from '@nestjs/platform-express';
+import express from 'express';
+import * as functions from 'firebase-functions';
 
 import { AppModule } from './app/app.module';
 
-async function bootstrap(): Promise<void> {
-  const app = await NestFactory.create(AppModule);
-  const globalPrefix = 'api';
-  app.setGlobalPrefix(globalPrefix);
-  const port = process.env.PORT || 3000;
-  await app.listen(port);
-  Logger.log(
-    `🚀 Application is running on: http://localhost:${port}/${globalPrefix}`
-  );
-}
+const server = express();
 
-bootstrap();
+export const createNestServer = async (
+  expressInstance: unknown
+): Promise<INestApplication> => {
+  const app = await NestFactory.create(
+    AppModule,
+    new ExpressAdapter(expressInstance)
+  );
+
+  return app.init();
+};
+
+createNestServer(server)
+  .then((_: INestApplication) => console.info('Nest Ready'))
+  .catch((err) => console.error(err));
+
+// Connect express server to Firebase Functions
+export const api = functions.https.onRequest(server);
