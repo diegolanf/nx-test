@@ -25,7 +25,7 @@
         }
       }
     },
-    "serve": {
+    "serve-node": {
       "executor": "@nrwl/js:node",
       "options": {
         "buildTarget": "api:build"
@@ -34,6 +34,16 @@
         "production": {
           "buildTarget": "api:build:production"
         }
+      }
+    },
+    "serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "nx serve-node api",
+          "firebase emulators:start --only functions"
+        ],
+        "parallel": true
       }
     },
     "lint": {
